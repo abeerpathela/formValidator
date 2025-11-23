@@ -1,4 +1,4 @@
-﻿# 📝 **Form Validator**
+# 📝 **Form Validator**
 
 A beautifully designed and fully functional **Form Validation Project** built using **HTML, CSS, and JavaScript**. This project validates user inputs in real time and displays alert messages for incorrect or missing fields.
 
@@ -28,24 +28,28 @@ All validation feedback is shown using interactive alert pop-ups.
 
 ## 🚀 **Project Screenshots**
 
-Here are all the screenshots used in the project:
+Screenshots were not inside the repository, so GitHub could not display them.
 
-* ![](/mnt/data/(Screenshots only for documentation, not in repo):
-* ![](/mnt/data/Screenshot 2025-11-23 112309.png)
-* ![](/mnt/data/Screenshot 2025-11-23 112323.png)
-* ![](/mnt/data/Screenshot 2025-11-23 112343.png)
-* ![](/mnt/data/Screenshot 2025-11-23 112450.png)
-* ![](/mnt/data/Screenshot 2025-11-23 112516.png)
-* ![](/mnt/data/Screenshot 2025-11-23 112552.png)
-* ![](/mnt/data/Screenshot 2025-11-23 112611.png) 112309.png)
-* ![](/mnt/data/Screenshot 2025-11-23 112323.png)
-* ![](/mnt/data/Screenshot 2025-11-23 112343.png)
-* ![](/mnt/data/Screenshot 2025-11-23 112450.png)
-* ![](/mnt/data/Screenshot 2025-11-23 112516.png)
-* ![](/mnt/data/Screenshot 2025-11-23 112552.png)
-* ![](/mnt/data/Screenshot 2025-11-23 112611.png)
+### 📌 How to Fix Screenshot Display
 
----
+1. Create a folder named `screenshots` inside your project.
+2. Upload all PNG screenshot files there.
+3. Replace this section with:
+
+```md
+### Screenshot 1
+![Screenshot 1](screenshots/s1.png)
+
+### Screenshot 2
+![Screenshot 2](screenshots/s2.png)
+
+### Screenshot 3
+![Screenshot 3](screenshots/s3.png)
+
+...add more as needed
+```
+
+## Once you upload the screenshots, I can automatically generate this section for you.
 
 ## 📁 **Project Structure**
 
@@ -55,6 +59,7 @@ formValidator /
 │── eye.png
 │── hidden.png
 │── README.md
+│── (Screenshots are shown below but **not** part of the actual project folder)
 ```
 
 ---
@@ -100,4 +105,3 @@ Contributions are welcome! Feel free to open issues or submit pull requests.
 ## 👨‍💻 **Author**
 
 Made with ❤️ by **Abeer Pathela**.
-
