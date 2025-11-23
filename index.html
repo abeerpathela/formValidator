@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+        @keyframes fadeIn {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes slideDown {
+            0% { opacity: 0; transform: translateY(-20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+
+<body class="bg-gradient-to-br from-purple-600 via-indigo-600 to-blue-600 min-h-screen flex justify-center items-center p-4">
+
+    <div class="backdrop-blur-xl bg-white/10 shadow-2xl rounded-3xl p-10 w-full max-w-md border border-white/20"
+         style="animation: fadeIn 1s ease">
+
+        <h1 class="text-4xl font-semibold text-white text-center mb-8 tracking-wide drop-shadow-lg"
+            style="animation: slideDown 0.8s ease">
+            Create Your Account
+        </h1>
+
+        <form class="flex flex-col space-y-6 text-lg">
+
+            <!-- Username -->
+            <div class="flex flex-col space-y-2" style="animation: fadeIn 1.4s ease">
+                <label class="text-white font-medium tracking-wide">Username:</label>
+                <input type="text" data-val="Username"
+                    class="px-4 py-3 rounded-xl bg-white/20 border border-white/20 text-white placeholder-gray-200
+                           focus:ring-4 focus:ring-purple-400/50 focus:outline-none backdrop-blur-md transition-all duration-300">
+            </div>
+
+            <!-- Contact -->
+            <div class="flex flex-col space-y-2" style="animation: fadeIn 1.6s ease">
+                <label class="text-white font-medium tracking-wide">Contact:</label>
+                <input type="number" data-val="Contact"
+                    class="px-4 py-3 rounded-xl bg-white/20 border border-white/20 text-white placeholder-gray-200
+                           focus:ring-4 focus:ring-blue-400/50 focus:outline-none backdrop-blur-md transition-all duration-300">
+            </div>
+
+            <!-- Password -->
+            <div class="flex flex-col space-y-2" style="animation: fadeIn 1.8s ease">
+                <label class="text-white font-medium tracking-wide">Password:</label>
+                <div class="flex items-center bg-white/20 border border-white/20 rounded-xl px-3
+                            focus-within:ring-4 focus-within:ring-pink-400/50 backdrop-blur-md transition-all duration-300">
+
+                    <input type="password" data-val="Password"
+                        class="w-full bg-transparent py-3 text-white focus:outline-none">
+
+                    <button class="showPassword p-1 hover:scale-110 transition">
+                        <img src="eye.png" height="22" width="22">
+                    </button>
+                </div>
+            </div>
+
+            <!-- Confirm Password -->
+            <div class="flex flex-col space-y-2" style="animation: fadeIn 2s ease">
+                <label class="text-white font-medium tracking-wide">Confirm Password:</label>
+                <div class="flex items-center bg-white/20 border border-white/20 rounded-xl px-3
+                            focus-within:ring-4 focus-within:ring-green-400/50 backdrop-blur-md transition-all duration-300">
+
+                    <input type="password" data-val="ConfirmPassword"
+                        class="w-full bg-transparent py-3 text-white focus:outline-none">
+
+                    <button class="showConfirmPassword p-1 hover:scale-110 transition">
+                        <img src="eye.png" height="22" width="22">
+                    </button>
+                </div>
+            </div>
+
+            <!-- Submit -->
+            <div class="flex flex-col space-y-2" style="animation: fadeIn 2.3s ease">
+                <button
+                    class="submitButton py-3 px-6 text-xl bg-gradient-to-r from-green-400 to-emerald-500 
+                           rounded-xl text-white font-semibold shadow-lg shadow-green-700/40
+                           hover:scale-[1.03] hover:shadow-xl hover:shadow-green-500/50
+                           active:scale-95 transition-all duration-300">
+                    Submit Your Form
+                </button>
+            </div>
+
+        </form>
+    </div>
+
+    <!-- YOUR ORIGINAL JS — NO CHANGES MADE -->
+    <script>
+        const allInput=document.querySelectorAll("input");
+        const submitButton=document.querySelector(".submitButton");
+        const showPassword=document.querySelector(".showPassword");
+        const showConfirmPassword=document.querySelector(".showConfirmPassword");
+        let passwordView=false;
+        let confirmPasswordView=false;
+        const formData={
+            "Username":"",
+            "Contact":"",
+            "Password":"",
+            "ConfirmPassword":""
+        };
+        function passwordViewer(event){
+            event.preventDefault();
+            let buttonSelected=event.currentTarget;
+            let inputTag=buttonSelected.previousElementSibling;
+            let imageTag=buttonSelected.querySelector("img");
+            if(passwordView===false){
+                imageTag.setAttribute('src','hidden.png');
+                inputTag.setAttribute('type','text');
+                passwordView=true; 
+            }
+            else{
+                imageTag.setAttribute('src','eye.png');
+                inputTag.setAttribute('type','password'); 
+                passwordView=false;
+            }
+        }
+        function confirmPasswordViewer(event){
+            event.preventDefault();
+            let buttonSelected=event.currentTarget;
+            let inputTag=buttonSelected.previousElementSibling;
+            let imageTag=buttonSelected.querySelector("img");
+            if(confirmPasswordView===false){
+                imageTag.setAttribute('src','hidden.png');
+                inputTag.setAttribute('type','text');
+                confirmPasswordView=true; 
+            }
+            else{
+                imageTag.setAttribute('src','eye.png');
+                inputTag.setAttribute('type','password'); 
+                confirmPasswordView=false;
+            }
+        }
+        showPassword.addEventListener('click',passwordViewer);
+        showConfirmPassword.addEventListener('click',confirmPasswordViewer);
+        function isFormValid(){
+            for(let input of allInput){
+                if(input.value.trim()===""){
+                    alert("all fields are necessary!!");
+                    return false;
+                }
+            }
+            if(formData.Contact.length!==10){
+                alert("Contact number must of 10 digits only!!");
+                return false;
+            }
+            const specialSymbols=/[0-9./,:;{}\_+=!@#$%^&*)(><?~-]/;
+            if(!specialSymbols.test(formData.Password)){    
+                alert("password must contain at least one number or speacial chracter");
+                return false;
+            }
+            if(formData.Password!==formData.ConfirmPassword){
+                alert("both the password does not match!!");
+                return false;
+            }
+            return true;
+        }
+        function changeHandler(event){
+            let dataValue=event.currentTarget.getAttribute("data-val");
+            formData[dataValue]=event.currentTarget.value;
+        }
+        function submitHandler(event){
+            event.preventDefault();
+            if(!isFormValid()){
+                return;
+            }
+            else{
+                console.log(formData);
+                alert(
+                    `Username: ${formData.Username}
+                    Contact: ${formData.Contact}
+                    Password: ${formData.Password}
+                    Confirm Password: ${formData.ConfirmPassword}`
+                );
+                allInput.forEach((eachInput)=>{
+                    let dataValue=eachInput.getAttribute("data-val");
+                    formData[dataValue]="";
+                    eachInput.value="";
+                })
+            }
+        }
+        allInput.forEach((eachInput)=>{
+            eachInput.addEventListener("change",changeHandler);
+        })
+        submitButton.addEventListener('click',submitHandler);
+        document.addEventListener("keydown",(event)=>{
+            if(event.key==="Enter"){
+                submitHandler();
+            }
+        })
+    </script>
+
+</body>
+</html>
